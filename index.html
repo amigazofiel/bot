@@ -376,7 +376,7 @@
             <p class="section-content">
                 El futuro financiero está en sus manos. Nuestro sistema está diseñado para que usted pueda disfrutar de la libertad y el lujo que siempre ha deseado.
             </p>
-            <img class="luxury-image" src="https://googleusercontent.com/image_generation_content/0" alt="Persona disfrutando de un estilo de vida lujoso con inteligencia artificial" />
+            <img class="luxury-image" src="https://i.postimg.cc/G2MXQFDz/interior-3778708.jpg" alt="Persona disfrutando de un estilo de vida lujoso con inteligencia artificial" />
         </section>
 
         <section class="cta-section">
@@ -405,7 +405,7 @@
             const tableBody = document.getElementById(tableId);
             tableBody.innerHTML = '';
             let accumulated = initialCapital;
-            const monthlyReturnRate = 1.13475;
+            const monthlyReturnRate = 1.13475; // Corresponde al 113.475% de ganancia del primer mes, ajustado para el cálculo.
             
             for (let mes = 1; mes <= 12; mes++) {
                 const initial = accumulated;
@@ -423,8 +423,13 @@
             }
         }
 
+        // Generar tabla para $10
         generateCompoundTable(10, 'compound-table-body-10');
+        
+        // Generar tabla para $100
         generateCompoundTable(100, 'compound-table-body-100');
+
+        // Generar tabla para $1,000
         generateCompoundTable(1000, 'compound-table-body-1000');
     </script>
 </body>
