@@ -317,6 +317,8 @@
         <section class="table-container">
             <h2 class="section-title">Vea el potencial del interés compuesto</h2>
             <p>La magia de este sistema es que puede generar ingresos incluso sin una inversión inicial. Sin embargo, para escalar sus ganancias, la inversión en el sistema del bróker y el Bot es clave. Aquí puede visualizar un cálculo aproximado de cómo crecería su capital con el tiempo. El poder de la inversión está en sus manos.</p>
+            
+            <h3>Inversión inicial: $10 USD</h3>
             <table>
                 <thead>
                     <tr>
@@ -326,9 +328,24 @@
                         <th>Acumulado</th>
                     </tr>
                 </thead>
-                <tbody id="compound-table-body">
+                <tbody id="compound-table-body-10">
                 </tbody>
             </table>
+
+            <h3 style="margin-top: 3rem;">Inversión inicial: $100 USD</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Capital Inicial</th>
+                        <th>Ganancia Mensual</th>
+                        <th>Acumulado</th>
+                    </tr>
+                </thead>
+                <tbody id="compound-table-body-100">
+                </tbody>
+            </table>
+            <p>Ahora, imagine el potencial de sus ganancias con una inversión de <strong>$1000 USD o más.</strong></p>
         </section>
 
         <section class="cta-section">
@@ -353,32 +370,33 @@
         </footer>
     </div>
     <script>
-        const tableData = [
-            { mes: 1, capitalInicial: 10, ganancia: 11.35, acumulado: 21.35 },
-            { mes: 2, capitalInicial: 21.35, ganancia: 24.22, acumulado: 45.57 },
-            { mes: 3, capitalInicial: 45.57, ganancia: 51.71, acumulado: 97.28 },
-            { mes: 4, capitalInicial: 97.28, ganancia: 74.90, acumulado: 172.18 },
-            { mes: 5, capitalInicial: 172.18, ganancia: 107.89, acumulado: 280.07 },
-            { mes: 6, capitalInicial: 280.07, ganancia: 155.43, acumulado: 435.50 },
-            { mes: 7, capitalInicial: 435.50, ganancia: 223.90, acumulado: 659.40 },
-            { mes: 8, capitalInicial: 659.40, ganancia: 332.33, acumulado: 991.74 },
-            { mes: 9, capitalInicial: 991.74, ganancia: 483.68, acumulado: 1475.42 },
-            { mes: 10, capitalInicial: 1475.42, ganancia: 599.41, acumulado: 2074.83 },
-            { mes: 11, capitalInicial: 2074.83, ganancia: 762.67, acumulado: 2837.50 },
-            { mes: 12, capitalInicial: 2837.50, ganancia: 947.42, acumulado: 3784.92 }
-        ];
+        function generateCompoundTable(initialCapital, tableId) {
+            const tableBody = document.getElementById(tableId);
+            tableBody.innerHTML = '';
+            let accumulated = initialCapital;
+            const monthlyReturnRate = 1.13475; // Corresponde al 113.475% de ganancia del primer mes, ajustado para el cálculo.
+            
+            for (let mes = 1; mes <= 12; mes++) {
+                const initial = accumulated;
+                const gain = initial * (monthlyReturnRate - 1);
+                accumulated += gain;
 
-        const tableBody = document.getElementById('compound-table-body');
-        tableData.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.mes}</td>
-                <td>$${item.capitalInicial.toFixed(2)}</td>
-                <td>$${item.ganancia.toFixed(2)}</td>
-                <td>$${item.acumulado.toFixed(2)}</td>
-            `;
-            tableBody.appendChild(row);
-        });
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${mes}</td>
+                    <td>$${initial.toFixed(2)}</td>
+                    <td>$${gain.toFixed(2)}</td>
+                    <td>$${accumulated.toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+
+        // Generar tabla para $10
+        generateCompoundTable(10, 'compound-table-body-10');
+        
+        // Generar tabla para $100
+        generateCompoundTable(100, 'compound-table-body-100');
     </script>
 </body>
 </html>
