@@ -247,6 +247,13 @@
             background-color: #2a2a2a;
         }
 
+        .luxury-image {
+            max-width: 100%;
+            border-radius: 15px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
         /* Animaciones */
         @keyframes text-pop {
             0% { transform: scale(0.5); opacity: 0; }
@@ -316,87 +323,4 @@
         
         <section class="table-container">
             <h2 class="section-title">Vea el potencial del interés compuesto</h2>
-            <p>La magia de este sistema es que puede generar ingresos incluso sin una inversión inicial. Sin embargo, para escalar sus ganancias, la inversión en el sistema del bróker y el Bot es clave. Aquí puede visualizar un cálculo aproximado de cómo crecería su capital con el tiempo. El poder de la inversión está en sus manos.</p>
-            
-            <h3>Inversión inicial: $10 USD</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mes</th>
-                        <th>Capital Inicial</th>
-                        <th>Ganancia Mensual</th>
-                        <th>Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody id="compound-table-body-10">
-                </tbody>
-            </table>
-
-            <h3 style="margin-top: 3rem;">Inversión inicial: $100 USD</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mes</th>
-                        <th>Capital Inicial</th>
-                        <th>Ganancia Mensual</th>
-                        <th>Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody id="compound-table-body-100">
-                </tbody>
-            </table>
-            <p>Ahora, imagine el potencial de sus ganancias con una inversión de <strong>$1000 USD o más.</strong></p>
-        </section>
-
-        <section class="cta-section">
-            <h2>Su próximo paso hacia la libertad financiera</h2>
-            <p>
-                Estamos listos para guiarlo en este viaje. El primer paso es registrarse en las plataformas que le permitirán acceder a este sistema inteligente.
-            </p>
-            <a href="https://broker.zaffex.com/auth/register?referrerUserId=01K2B7XCSZ45QKX7TMK865JNT9" class="btn" style="background-color: var(--color-acento-amarillo); margin-right: 1rem;" target="_blank">Regístrese en el bróker</a>
-            <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" class="btn" target="_blank">Regístrese en el Bot</a>
-            <p class="whatsapp-link">
-                Una vez que se haya registrado en al menos una de las dos plataformas a través de mis enlaces de referido, envíe su comprobante de registro a mi WhatsApp para que pueda guiarle en los siguientes pasos. Si no es mi referido, no podré ayudarle con el sistema para apalancarse.
-            </p>
-            <a href="https://wa.link/93u0cb" class="btn" style="background-color: var(--color-acento-claro); font-size: 1.1rem; margin-top: 1.5rem;" target="_blank">
-                Enviar comprobante por WhatsApp
-            </a>
-        </section>
-        
-        <footer>
-            <p style="font-size: 0.9rem; color: #888; margin-top: 2rem;">
-                Aviso de riesgo: El trading conlleva un riesgo inherente y no es adecuado para todos los inversionistas. Las ganancias pasadas no garantizan los resultados futuros.
-            </p>
-        </footer>
-    </div>
-    <script>
-        function generateCompoundTable(initialCapital, tableId) {
-            const tableBody = document.getElementById(tableId);
-            tableBody.innerHTML = '';
-            let accumulated = initialCapital;
-            const monthlyReturnRate = 1.13475; // Corresponde al 113.475% de ganancia del primer mes, ajustado para el cálculo.
-            
-            for (let mes = 1; mes <= 12; mes++) {
-                const initial = accumulated;
-                const gain = initial * (monthlyReturnRate - 1);
-                accumulated += gain;
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${mes}</td>
-                    <td>$${initial.toFixed(2)}</td>
-                    <td>$${gain.toFixed(2)}</td>
-                    <td>$${accumulated.toFixed(2)}</td>
-                `;
-                tableBody.appendChild(row);
-            }
-        }
-
-        // Generar tabla para $10
-        generateCompoundTable(10, 'compound-table-body-10');
-        
-        // Generar tabla para $100
-        generateCompoundTable(100, 'compound-table-body-100');
-    </script>
-</body>
-</html>
+            <p>La magia de este sistema es que puede generar ingresos incluso
