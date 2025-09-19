@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potencia tus ganancias con la IA - GPTRADING</title>
+    <title>Desbloquea tu Libertad Financiera con Inteligencia Artificial</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600&display=swap');
+
         :root {
-            --color-principal: #33d162; /* Verde brillante de la imagen */
-            --color-secundario: #0c8a3c; /* Verde oscuro de la imagen */
-            --color-texto-claro: #f0f0f0; /* Blanco/Gris claro para el texto */
-            --color-fondo-oscuro: #1a1a1a; /* Negro oscuro de la imagen */
-            --color-acento-claro: #57d47f; /* Verde más claro para acentos */
+            --color-principal: #33d162; /* Verde brillante */
+            --color-secundario: #0c8a3c; /* Verde oscuro */
+            --color-fondo-oscuro: #121212; /* Negro más profundo */
+            --color-texto-claro: #e0e0e0; /* Gris claro para el texto */
+            --color-acento-claro: #57d47f; /* Verde más claro */
+            --color-acento-amarillo: #FFD700; /* Amarillo vibrante */
+            --color-acento-azul: #00BFFF; /* Azul eléctrico */
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--color-fondo-oscuro);
             color: var(--color-texto-claro);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.8;
             text-align: center;
         }
 
@@ -33,26 +35,32 @@
 
         header {
             background: linear-gradient(to right, var(--color-secundario), var(--color-principal));
-            padding: 4rem 1rem;
+            padding: 5rem 1rem 3rem;
             border-bottom: 5px solid var(--color-acento-claro);
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
             color: var(--color-fondo-oscuro);
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.2;
             margin: 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+            animation: text-pop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
         }
 
-        .hero p {
-            font-size: 1.4rem;
+        header p {
+            font-size: 1.5rem;
             max-width: 700px;
             margin: 1.5rem auto;
             font-weight: 600;
+            color: var(--color-fondo-oscuro);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
 
         .btn {
@@ -65,13 +73,14 @@
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 50px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .btn:hover {
-            background-color: var(--color-acento-claro);
+            background-color: var(--color-acento-amarillo);
             transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
         }
 
         section {
@@ -79,30 +88,34 @@
         }
 
         .section-title {
-            font-size: 2.2rem;
-            color: var(--color-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--color-acento-amarillo);
             margin-bottom: 1rem;
             font-weight: 700;
             text-transform: uppercase;
+            position: relative;
+            animation: fade-in-up 1s ease-out;
         }
 
-        .pain-points, .solution, .features, .call-to-action {
-            background-color: var(--color-fondo-oscuro);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--color-secundario);
-            box-shadow: 0 0 20px rgba(51, 209, 98, 0.1);
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-acento-azul);
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
 
-        .pain-points p, .solution p, .features ul {
+        .section-content {
             font-size: 1.1rem;
             color: var(--color-texto-claro);
             max-width: 700px;
             margin: 0 auto 1.5rem;
         }
 
-        .features ul {
+        .features-grid {
             list-style: none;
             padding: 0;
             display: grid;
@@ -111,44 +124,149 @@
             text-align: left;
         }
         
-        .features li {
-            background-color: var(--color-secundario);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--color-acento-claro);
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .features li:hover {
-            transform: translateY(-5px);
-        }
-
-        .features li h3 {
-            color: var(--color-texto-claro);
-            margin-top: 0;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
+        .feature-card {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--color-secundario);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            animation: slide-in 1s ease-out;
         }
         
-        .features li h3::before {
-            content: "✓";
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(51, 209, 98, 0.2);
+            border-color: var(--color-acento-amarillo);
+        }
+
+        .feature-card h3 {
+            font-family: 'Montserrat', sans-serif;
             color: var(--color-principal);
-            font-size: 1.5em;
-            margin-right: 10px;
+            margin-top: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-card h3::before {
+            content: "✨";
+            font-size: 1.2em;
+            margin-right: 15px;
+            color: var(--color-acento-amarillo);
+            animation: sparkle 1s infinite alternate;
         }
 
-        .call-to-action {
-            background: linear-gradient(to right, var(--color-secundario), var(--color-principal));
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 3rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-acento-azul), var(--color-principal));
             color: var(--color-fondo-oscuro);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            animation: fade-in 1.5s ease-out;
         }
 
-        .call-to-action h2 {
-            font-size: 2.5rem;
+        .cta-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
             text-transform: uppercase;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            font-weight: 800;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-link {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1rem auto;
+            color: var(--color-texto-claro);
+        }
+
+        /* Tabla dinámica */
+        .table-container {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .table-container p {
+            font-style: italic;
+            color: var(--color-acento-claro);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        
+        thead {
+            background-color: var(--color-secundario);
+            color: var(--color-texto-claro);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #1a1a1a;
+        }
+
+        tbody tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* Animaciones */
+        @keyframes text-pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slide-in {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
         }
     </style>
 </head>
@@ -156,54 +274,77 @@
 
     <div class="container">
         <header>
-            <h1 class="hero">
-                ¿Cansado de perder dinero? <br>
-                ¿Sin tiempo para operar?
+            <h1>
+                ¿Sueñas con la libertad financiera?
+                <br>
+                Nosotros la hacemos realidad.
             </h1>
-            <p>Descubre GPTRADING, el bot que hace el trabajo pesado por ti y maximiza tus ganancias con inteligencia artificial.</p>
-            <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" class="btn">Empieza ahora y maximiza tus ganancias</a>
+            <p>
+                Descubra cómo la inteligencia artificial puede trabajar por usted, 24/7, optimizando su capital y liberando su tiempo.
+            </p>
         </header>
 
-        <section class="pain-points">
-            <h2 class="section-title">¿Te identificas con alguno de estos puntos?</h2>
-            <p>
-                Sabemos lo que es el estrés de las inversiones. La falta de tiempo para analizar el mercado, el miedo a tomar decisiones equivocadas y la frustración de usar plataformas complicadas. Quieres que tu dinero crezca, pero no quieres vivir pegado a una pantalla.
+        <section class="problem-solution">
+            <h2 class="section-title">¿Se identifica con esta situación?</h2>
+            <p class="section-content">
+                Sabe que el trading puede cambiar su vida, pero carece del tiempo o la experiencia para dedicarse a analizar el mercado. El estrés de las decisiones equivocadas y la frustración por los resultados inconsistentes le impiden avanzar. [cite_start]Desea un camino claro y confiable para que su dinero crezca sin estar atado a una pantalla[cite: 18, 23, 24].
             </p>
-        </section>
-
-        <section class="solution">
-            <h2 class="section-title">La solución está en la automatización inteligente</h2>
-            <p>
-                GPTRADING es tu socio perfecto en el mundo de las finanzas. Un bot de trading diseñado para operar por ti, 24/7, utilizando estrategias de inteligencia artificial de alta precisión para identificar las mejores oportunidades del mercado. Es la libertad de un experto en tu bolsillo, sin que tengas que serlo.
-            </p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/PIa29n81uLk?si=pU3E3G8Gz_mF6g2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </section>
 
         <section class="features">
-            <h2 class="section-title">¿Qué hace a GPTRADING diferente?</h2>
-            <ul>
-                <li>
-                    <h3>Operaciones en automático</h3>
-                    <p>Nuestro bot no duerme. Trabaja sin descanso para generar rendimientos mientras tú te enfocas en lo que realmente importa.</p>
+            <h2 class="section-title">El poder de la IA a su servicio</h2>
+            <p class="section-content">
+                [cite_start]Hemos desarrollado una solución automatizada para inversionistas como usted, que valora la transparencia, la facilidad de uso y los resultados consistentes[cite: 18, 24]. Aquí le mostramos cómo funciona:
+            </p>
+            <ul class="features-grid">
+                <li class="feature-card">
+                    <h3>Automatización Total</h3>
+                    [cite_start]<p>Nuestro Bot opera por usted de forma ininterrumpida, capturando oportunidades en el mercado global mientras usted disfruta de su vida[cite: 24].</p>
                 </li>
-                <li>
-                    <h3>Inteligencia Artificial de Vanguardia</h3>
-                    <p>Analiza el mercado con una velocidad y precisión inalcanzables para el ser humano, minimizando errores y maximizando tus beneficios.</p>
+                <li class="feature-card">
+                    <h3>Tecnología Inteligente</h3>
+                    [cite_start]<p>Equipado con algoritmos de última generación, el Bot analiza datos con una velocidad y precisión inigualables por el ser humano, minimizando riesgos y maximizando su rentabilidad[cite: 19].</p>
                 </li>
-                <li>
-                    <h3>Control y Transparencia</h3>
-                    <p>Aunque el bot opera por ti, tú mantienes el control total. Monitorea tu capital, historial de operaciones y el rendimiento en tiempo real, de manera simple y clara.</p>
-                </li>
-                <li>
-                    <h3>Fácil de usar</h3>
-                    <p>Diseñado para novatos e intermedios. Olvídate de la frustración. Nuestra plataforma es intuitiva y te guía paso a paso para que empieces a ganar en minutos.</p>
+                <li class="feature-card">
+                    <h3>Simplicidad y Confianza</h3>
+                    <p>Diseñado para ser intuitivo. [cite_start]Mantendrá el control total de su capital en el bróker, monitoreando su crecimiento en tiempo real desde una interfaz sencilla y clara[cite: 24].</p>
                 </li>
             </ul>
         </section>
+        
+        <section class="table-container">
+            <h2 class="section-title">Vea el potencial del interés compuesto</h2>
+            <p>La magia de este sistema es que puede generar ingresos incluso sin una inversión inicial. Sin embargo, para escalar sus ganancias, la inversión en el sistema del bróker y el Bot es clave. Aquí puede visualizar un cálculo aproximado de cómo crecería su capital con el tiempo. El poder de la inversión está en sus manos.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Capital Inicial</th>
+                        <th>Ganancia Mensual</th>
+                        <th>Acumulado</th>
+                    </tr>
+                </thead>
+                <tbody id="compound-table-body">
+                    </tbody>
+            </table>
+        </section>
 
-        <section class="call-to-action">
-            <h2>El momento de invertir inteligentemente es ahora</h2>
-            <p>Miles de personas ya están aprovechando el poder de la IA para hacer crecer su patrimonio. Es tu turno. Da el siguiente paso y únete a la revolución del trading automatizado.</p>
-            <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" class="btn">Regístrate gratis y empieza a ganar</a>
+        <section class="cta-section">
+            <h2>Su próximo paso hacia la libertad financiera</h2>
+            <p>
+                Estamos listos para guiarlo en este viaje. El primer paso es registrarse en las plataformas que le permitirán acceder a este sistema inteligente.
+            </p>
+            <a href="https://broker.zaffex.com/auth/register?referrerUserId=01K2B7XCSZ45QKX7TMK865JNT9" class="btn" style="background-color: var(--color-acento-amarillo); margin-right: 1rem;">Regístrese en el bróker</a>
+            <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" class="btn">Regístrese en el Bot</a>
+            <p class="whatsapp-link">
+                Una vez que se haya registrado en al menos una de las dos plataformas a través de mis enlaces de referido, envíe su comprobante de registro a mi WhatsApp para que pueda guiarle en los siguientes pasos. Si no es mi referido, no podré ayudarle con el sistema para apalancarse.
+            </p>
+            <a href="https://wa.link/93u0cb" class="btn" style="background-color: var(--color-acento-claro); font-size: 1.1rem; margin-top: 1.5rem;">
+                Enviar comprobante por WhatsApp
+            </a>
         </section>
         
         <footer>
@@ -212,6 +353,33 @@
             </p>
         </footer>
     </div>
+    <script>
+        const tableData = [
+            { mes: 1, capitalInicial: 10, ganancia: 11.35, acumulado: 21.35 },
+            { mes: 2, capitalInicial: 21.35, ganancia: 24.22, acumulado: 45.57 },
+            { mes: 3, capitalInicial: 45.57, ganancia: 51.71, acumulado: 97.28 },
+            { mes: 4, capitalInicial: 97.28, ganancia: 74.90, acumulado: 172.18 },
+            { mes: 5, capitalInicial: 172.18, ganancia: 107.89, acumulado: 280.07 },
+            { mes: 6, capitalInicial: 280.07, ganancia: 155.43, acumulado: 435.50 },
+            { mes: 7, capitalInicial: 435.50, ganancia: 223.90, acumulado: 659.40 },
+            { mes: 8, capitalInicial: 659.40, ganancia: 332.33, acumulado: 991.74 },
+            { mes: 9, capitalInicial: 991.74, ganancia: 483.68, acumulado: 1475.42 },
+            { mes: 10, capitalInicial: 1475.42, ganancia: 599.41, acumulado: 2074.83 },
+            { mes: 11, capitalInicial: 2074.83, ganancia: 762.67, acumulado: 2837.50 },
+            { mes: 12, capitalInicial: 2837.50, ganancia: 947.42, acumulado: 3784.92 }
+        ];
 
+        const tableBody = document.getElementById('compound-table-body');
+        tableData.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.mes}</td>
+                <td>$${item.capitalInicial.toFixed(2)}</td>
+                <td>$${item.ganancia.toFixed(2)}</td>
+                <td>$${item.acumulado.toFixed(2)}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
 </body>
 </html>
