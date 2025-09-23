@@ -26,7 +26,14 @@
             border-radius: 1.5rem;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            cursor: pointer;
+        }
+        .video-player video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .video-player-overlay {
             position: absolute;
@@ -37,7 +44,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.2);
             transition: background 0.3s ease;
         }
         .video-player:hover .video-player-overlay {
@@ -51,9 +58,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
         }
         .video-player:hover .play-button {
+            opacity: 1;
             transform: scale(1.1);
         }
         .play-button svg {
@@ -96,8 +106,8 @@
 
     <!-- Mensaje Box -->
     <div id="message-box" class="message-box">
-        <p class="text-lg font-semibold mb-4">¡Hola! Este es un video simulado.</p>
-        <p class="text-gray-600 mb-6">Estamos trabajando en un video real para esta página. Mientras tanto, sigue leyendo y descubrí cómo podés acceder a esta increíble herramienta de trading.</p>
+        <p class="text-lg font-semibold mb-4">¡El video se está reproduciendo!</p>
+        <p class="text-gray-600 mb-6">Estamos usando un video de stock para esta demostración. Puedes reemplazarlo con cualquier video de stock gratuito de sitios como Pexels o Pixabay.</p>
         <button onclick="hideMessageBox()" class="bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800">Entendido</button>
     </div>
     <div id="overlay" class="overlay" onclick="hideMessageBox()"></div>
@@ -112,30 +122,9 @@
             <!-- Grid lines -->
             <path d="M100 0V800 M200 0V800 M300 0V800 M400 0V800 M500 0V800 M600 0V800 M700 0V800 M800 0V800 M900 0V800 M1000 0V800 M1100 0V800" stroke="#1d4052" stroke-width="1"/>
             <path d="M0 100H1200 M0 200H1200 M0 300H1200 M0 400H1200 M0 500H1200 M0 600H1200 M0 700H1200" stroke="#1d4052" stroke-width="1"/>
-
-            <!-- Candlestick chart simulation -->
-            <!-- Helper function to create a candlestick -->
-            <!--
-            function createCandle(x, open, close, high, low, color) {
-                const isGreen = close > open;
-                const top = isGreen ? close : open;
-                const bottom = isGreen ? open : close;
-                const height = Math.abs(close - open);
-                const wickTop = high;
-                const wickBottom = low;
-                // Candle body
-                rect x="${x-5}" y="${800-top}" width="10" height="${height}" fill="${color}"
-                // Top wick
-                line x1="${x}" y1="${800-wickTop}" x2="${x}" y2="${800-top}" stroke="${color}" stroke-width="1"
-                // Bottom wick
-                line x1="${x}" y1="${800-bottom}" x2="${x}" y2="${800-wickBottom}" stroke="${color}" stroke-width="1"
-            }
-            -->
-
+            
             <!-- Candlesticks (Green mostly, ascending) -->
-            <!-- Data points: [x, open, close, high, low, color] -->
             <g id="candlesticks">
-                <!-- x, open, close, high, low -->
                 <rect x="55" y="650" width="10" height="20" fill="#22c55e" /> <line x1="60" y1="675" x2="60" y2="645" stroke="#22c55e" stroke-width="1"/>
                 <rect x="75" y="620" width="10" height="40" fill="#22c55e" /> <line x1="80" y1="665" x2="80" y2="615" stroke="#22c55e" stroke-width="1"/>
                 <rect x="95" y="610" width="10" height="25" fill="#ef4444" /> <line x1="100" y1="600" x2="100" y2="640" stroke="#ef4444" stroke-width="1"/>
@@ -219,13 +208,17 @@
             <p class="text-lg md:text-2xl max-w-3xl mx-auto mb-8 font-light">
                 Es hora de que tu capital trabaje para vos, 24/7, sin emociones ni errores humanos.
             </p>
-            <div class="video-player max-w-5xl mx-auto" onclick="showMessageBox()">
+            <div id="video-player-container" class="video-player max-w-5xl mx-auto">
+                <video id="video-player" class="w-full h-full" src="https://videos.pexels.com/video-files/3849187/3849187-uhd_2160_3840_25fps.mp4" poster="https://placehold.co/600x338/1a202c/fff?text=Click+to+Play" autoplay loop muted playsinline></video>
                 <div class="video-player-overlay">
-                    <div class="play-button">
-                        <svg viewBox="0 0 24 24">
+                    <button id="play-pause-button" class="play-button">
+                        <svg id="play-icon" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
-                    </div>
+                        <svg id="pause-icon" class="hidden" viewBox="0 0 24 24">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -377,15 +370,43 @@
     </footer>
 
     <script>
-        function showMessageBox() {
-            document.getElementById('message-box').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoPlayer = document.getElementById('video-player');
+            const playPauseButton = document.getElementById('play-pause-button');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const messageBox = document.getElementById('message-box');
+            const overlay = document.getElementById('overlay');
 
-        function hideMessageBox() {
-            document.getElementById('message-box').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
+            videoPlayer.addEventListener('play', () => {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            });
+
+            videoPlayer.addEventListener('pause', () => {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            });
+
+            playPauseButton.addEventListener('click', () => {
+                if (videoPlayer.paused) {
+                    videoPlayer.play();
+                } else {
+                    videoPlayer.pause();
+                }
+            });
+
+            // Handle the message box from the initial design
+            function showMessageBox() {
+                messageBox.style.display = 'block';
+                overlay.style.display = 'block';
+            }
+
+            window.hideMessageBox = function() {
+                messageBox.style.display = 'none';
+                overlay.style.display = 'none';
+            };
+        });
     </script>
 </body>
 </html>
