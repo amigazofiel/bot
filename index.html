@@ -1,458 +1,287 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desbloquea tu Libertad Financiera con Inteligencia Artificial</title>
+    <title>Desbloquea el Trading Automático con IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600&display=swap');
-
-        :root {
-            --color-principal: #33d162;
-            --color-secundario: #0c8a3c;
-            --color-fondo-oscuro: #121212;
-            --color-texto-claro: #e0e0e0;
-            --color-acento-claro: #57d47f;
-            --color-acento-amarillo: #FFD700;
-            --color-acento-azul: #00BFFF;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--color-fondo-oscuro);
-            color: var(--color-texto-claro);
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+        .cta-button {
+            transition: all 0.3s ease-in-out;
         }
-
-        header {
-            background: linear-gradient(to right, var(--color-secundario), var(--color-principal));
-            padding: 5rem 1rem 3rem;
-            border-bottom: 5px solid var(--color-acento-claro);
-            margin-bottom: 2rem;
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(22, 78, 99, 0.4);
+        }
+        .video-player {
             position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: #1a202c;
+            border-radius: 1.5rem;
             overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
         }
-        
-        /* Estilos para el fondo de la imagen */
-        header::before {
-            content: '';
+        .video-player-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://i.postimg.cc/cCcDLhVB/instagram.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.3; /* Ajusta este valor para más o menos transparencia */
-            z-index: 0;
-        }
-
-        header h1, header p {
-            position: relative;
-            z-index: 1; /* Asegura que el texto esté por encima de la imagen de fondo */
-        }
-
-        header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            color: var(--color-fondo-oscuro);
-            text-transform: uppercase;
-            font-weight: 800;
-            line-height: 1.2;
-            margin: 0;
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
-            animation: text-pop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin: 1.5rem auto;
-            font-weight: 600;
-            color: var(--color-fondo-oscuro);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--color-principal);
-            color: var(--color-fondo-oscuro);
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn:hover {
-            background-color: var(--color-acento-amarillo);
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-        }
-
-        section {
-            padding: 3rem 0;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            color: var(--color-acento-amarillo);
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            position: relative;
-            animation: fade-in-up 1s ease-out;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--color-acento-azul);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .section-content {
-            font-size: 1.1rem;
-            color: var(--color-texto-claro);
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .features-grid {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            text-align: left;
-        }
-        
-        .feature-card {
-            background-color: #1e1e1e;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid var(--color-secundario);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            animation: slide-in 1s ease-out;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(51, 209, 98, 0.2);
-            border-color: var(--color-acento-amarillo);
-        }
-
-        .feature-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--color-principal);
-            margin-top: 0;
-            font-size: 1.5rem;
             display: flex;
+            justify-content: center;
             align-items: center;
-            position: relative;
-            z-index: 2;
+            background: rgba(0, 0, 0, 0.6);
+            transition: background 0.3s ease;
         }
-        
-        .feature-card h3::before {
-            content: "✨";
-            font-size: 1.2em;
-            margin-right: 15px;
-            color: var(--color-acento-amarillo);
-            animation: sparkle 1s infinite alternate;
+        .video-player:hover .video-player-overlay {
+            background: rgba(0, 0, 0, 0.4);
         }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 3rem;
+        .play-button {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
         }
-
-        .video-container iframe {
-            position: absolute;
+        .video-player:hover .play-button {
+            transform: scale(1.1);
+        }
+        .play-button svg {
+            fill: #1a202c;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: none;
+            text-align: center;
+            max-width: 90%;
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        .overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, var(--color-acento-azul), var(--color-principal));
-            color: var(--color-fondo-oscuro);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            animation: fade-in 1.5s ease-out;
-        }
-
-        .cta-section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            text-transform: uppercase;
-            font-weight: 800;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .whatsapp-link {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 1rem auto;
-            color: var(--color-texto-claro);
-        }
-
-        .table-container {
-            margin: 2rem 0;
-            overflow-x: auto;
-            background-color: #1e1e1e;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .table-container p {
-            font-style: italic;
-            color: var(--color-acento-claro);
-            font-weight: 600;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-            text-align: left;
-        }
-        
-        thead {
-            background-color: var(--color-secundario);
-            color: var(--color-texto-claro);
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #333;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #1a1a1a;
-        }
-
-        tbody tr:hover {
-            background-color: #2a2a2a;
-        }
-
-        .luxury-image {
-            max-width: 100%;
-            border-radius: 15px;
-            margin: 2rem auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* Animaciones */
-        @keyframes text-pop {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes fade-in-up {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slide-in {
-            0% { transform: translateX(-100px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes sparkle {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 text-gray-800">
 
-    <div class="container">
-        <header>
-            <h1>
-                ¿Sueñas con la libertad financiera?
-                <br>
-                Nosotros la hacemos realidad.
+    <!-- Mensaje Box -->
+    <div id="message-box" class="message-box">
+        <p class="text-lg font-semibold mb-4">¡Hola! Este es un video simulado.</p>
+        <p class="text-gray-600 mb-6">Estamos trabajando en un video real para esta página. Mientras tanto, sigue leyendo y descubrí cómo podés acceder a esta increíble herramienta de trading.</p>
+        <button onclick="hideMessageBox()" class="bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800">Entendido</button>
+    </div>
+    <div id="overlay" class="overlay" onclick="hideMessageBox()"></div>
+
+    <!-- Hero Section -->
+    <header class="py-16 md:py-24 bg-gradient-to-r from-sky-800 to-sky-600 text-white relative overflow-hidden">
+        <!-- Background image of a financial graph -->
+        <img src="https://placehold.co/1200x800/103a48/ffffff?text=Gráfico+Financiero" alt="Gráfico financiero que muestra crecimiento" class="absolute inset-0 w-full h-full object-cover opacity-20">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                Dejá de Perder Tiempo y Dinero.
+                <br class="hidden md:inline">
+                <span class="text-amber-300">Descubrí el Trading Automatizado.</span>
             </h1>
-            <p>
-                Descubra cómo la inteligencia artificial puede trabajar por usted, 24/7, optimizando su capital y liberando su tiempo.
+            <p class="text-lg md:text-2xl max-w-3xl mx-auto mb-8 font-light">
+                Es hora de que tu capital trabaje para vos, 24/7, sin emociones ni errores humanos.
             </p>
-        </header>
+            <div class="video-player max-w-5xl mx-auto" onclick="showMessageBox()">
+                <div class="video-player-overlay">
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <section class="problem-solution">
-            <h2 class="section-title">¿Se identifica con esta situación?</h2>
-            <p class="section-content">
-                Sabe que el trading puede cambiar su vida, pero carece del tiempo o la experiencia para dedicarse a analizar el mercado. El estrés de las decisiones equivocadas y la frustración por los resultados inconsistentes le impiden avanzar. Desea un camino claro y confiable para que su dinero crezca sin estar atado a una pantalla.
-            </p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/PIa29n81uLk?si=pU3E3G8Gz_mF6g2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- Problem & Solution Section -->
+    <main class="container mx-auto px-4 py-16 md:py-24">
+        <section class="mb-16 md:mb-24 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900">¿Te sentís identificado?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <span class="text-4xl">🕰️</span>
+                    <h3 class="text-2xl font-semibold mt-4 mb-2">Poco Tiempo</h3>
+                    <p class="text-gray-600">Trabajás, tenés familia o un negocio... no tenés tiempo para analizar gráficos todo el día.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <span class="text-4xl">📉</span>
+                    <h3 class="text-2xl font-semibold mt-4 mb-2">Pérdidas Frustrantes</h3>
+                    <p class="text-gray-600">Seguiste señales de Telegram o gurús de YouTube, solo para terminar con la cuenta en rojo.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <span class="text-4xl">🧠</span>
+                    <h3 class="text-2xl font-semibold mt-4 mb-2">Estrés y Emoción</h3>
+                    <p class="text-gray-600">Te dejaste llevar por el miedo o la avaricia, tomando decisiones impulsivas que lamentás después.</p>
+                </div>
             </div>
         </section>
 
-        <section class="features">
-            <h2 class="section-title">El poder de la IA a su servicio</h2>
-            <p class="section-content">
-                Hemos desarrollado una solución automatizada para inversionistas como usted, que valora la transparencia, la facilidad de uso y los resultados consistentes. Aquí le mostramos cómo funciona:
-            </p>
-            <ul class="features-grid">
-                <li class="feature-card">
-                    <h3>Automatización Total</h3>
-                    <p>Nuestro Bot opera por usted de forma ininterrumpida, capturando oportunidades en el mercado global mientras usted disfruta de su vida.</p>
-                </li>
-                <li class="feature-card">
-                    <h3>Tecnología Inteligente</h3>
-                    <p>Equipado con algoritmos de última generación, el Bot analiza datos con una velocidad y precisión inigualables por el ser humano, minimizando riesgos y maximizando su rentabilidad.</p>
-                </li>
-                <li class="feature-card">
-                    <h3>Simplicidad y Confianza</h3>
-                    <p>Diseñado para ser intuitivo. Mantendrá el control total de su capital en el bróker, monitoreando su crecimiento en tiempo real desde una interfaz sencilla y clara.</p>
-                </li>
-            </ul>
-        </section>
-        
-        <section class="table-container">
-            <h2 class="section-title">Vea el potencial del interés compuesto</h2>
-            <p>La magia de este sistema es que puede generar ingresos incluso sin una inversión inicial. Sin embargo, para escalar sus ganancias, la inversión en el sistema del bróker y el Bot es clave.</p>
-            <p><strong>¡Atención!</strong> Con nuestro Bot, puede aplicar el interés compuesto <strong>cada 24 horas</strong>, no solo una vez al mes. Esto significa que el beneficio potencial es ¡enorme y descomunal si sabe aprovecharlo!</p>
-            <p>Aquí puede visualizar un cálculo aproximado de cómo crecería su capital con el tiempo. El poder de la inversión está en sus manos.</p>
-            
-            <h3>Inversión inicial: $10 USD</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mes</th>
-                        <th>Capital Inicial</th>
-                        <th>Ganancia Mensual</th>
-                        <th>Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody id="compound-table-body-10">
-                </tbody>
-            </table>
-
-            <h3 style="margin-top: 3rem;">Inversión inicial: $100 USD</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mes</th>
-                        <th>Capital Inicial</th>
-                        <th>Ganancia Mensual</th>
-                        <th>Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody id="compound-table-body-100">
-                </tbody>
-            </table>
-
-            <h3 style="margin-top: 3rem;">Inversión inicial: $1,000 USD</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mes</th>
-                        <th>Capital Inicial</th>
-                        <th>Ganancia Mensual</th>
-                        <th>Acumulado</th>
-                    </tr>
-                </thead>
-                <tbody id="compound-table-body-1000">
-                </tbody>
-            </table>
-            <p style="margin-top: 2rem;">Ahora, imagine el potencial de sus ganancias con una inversión de <strong>$10,000 USD o más.</strong></p>
-        </section>
-        
-        <section class="luxury-lifestyle-section">
-            <h2 class="section-title">¿Listo para vivir la vida que siempre ha soñado?</h2>
-            <p class="section-content">
-                El futuro financiero está en sus manos. Nuestro sistema está diseñado para que usted pueda disfrutar de la libertad y el lujo que siempre ha deseado.
-            </p>
-            <img class="luxury-image" src="https://i.postimg.cc/G2MXQFDz/interior-3778708.jpg" alt="Persona disfrutando de un estilo de vida lujoso con inteligencia artificial" />
+        <!-- Solution Section -->
+        <section class="bg-sky-50 py-16 md:py-24 rounded-3xl mb-16 md:mb-24 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2 px-4">
+                <img src="https://placehold.co/600x400/fff/333?text=Bot+de+Trading" alt="Ilustración de un bot de trading" class="rounded-3xl shadow-xl w-full h-auto">
+            </div>
+            <div class="md:w-1/2 px-4 text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-sky-900">La solución es simple, inteligente y 100% automatizada.</h2>
+                <p class="text-lg md:text-xl text-gray-700">Como usuario experimentado, sé que la solución no es pasar más horas frente a la pantalla. Quiero compartirte el <span class="font-bold text-sky-800">Bot de Trading Automático</span>, una poderosa herramienta diseñada para operar por vos 24/7 en los mercados, usando la inteligencia artificial para tomar decisiones lógicas y sin emociones.</p>
+            </div>
         </section>
 
-        <section class="cta-section">
-            <h2>Su próximo paso hacia la libertad financiera</h2>
-            <p>
-                Estamos listos para guiarlo en este viaje. El primer paso es registrarse en las plataformas que le permitirán acceder a este sistema inteligente.
-            </p>
-            <a href="https://broker.zaffex.com/auth/register?referrerUserId=01K2B7XCSZ45QKX7TMK865JNT9" class="btn" style="background-color: var(--color-acento-amarillo); margin-right: 1rem;" target="_blank">Regístrese en el bróker</a>
-            <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" class="btn" target="_blank">Regístrese en el Bot</a>
-            <p class="whatsapp-link">
-                Una vez que se haya registrado en al menos una de las dos plataformas a través de mis enlaces de referido, envíe su comprobante de registro a mi WhatsApp para que pueda guiarle en los siguientes pasos. Si no es mi referido, no podré ayudarle con el sistema para apalancarse.
-            </p>
-            <a href="https://wa.link/93u0cb" class="btn" style="background-color: var(--color-acento-claro); font-size: 1.1rem; margin-top: 1.5rem;" target="_blank">
-                Enviar comprobante por WhatsApp
-            </a>
+        <!-- The FREE Offer Section -->
+        <section class="max-w-6xl mx-auto text-center mb-16 md:mb-24">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">¿Y lo mejor? ¡Es completamente <span class="text-emerald-600">GRATIS!</span></h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">Sí, lo leíste bien. No vas a pagar ni un centavo por el bot. Mi misión es compartirte esta oportunidad para que vos también alcancés tus metas financieras. Lo único que te pido es que te registrés en las plataformas que yo mismo utilizo con mis enlaces de referido, lo que me permite seguir brindándote esta guía.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-12">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <span class="text-4xl mb-4 block">🤝</span>
+                    <h3 class="text-2xl font-bold mb-2">Una Alianza Ganar-Ganar</h3>
+                    <p class="text-gray-600">Yo recibo una pequeña comisión de las plataformas en las que te registras con mi enlace de referido cada vez que el bot te genera ganancias. Esto no afecta tu porción de los beneficios. Así, yo gano cuando vos ganás. ¡Tu éxito es mi éxito!</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <span class="text-4xl mb-4 block">🤖</span>
+                    <h3 class="text-2xl font-bold mb-2">Soporte y Configuración Personal</h3>
+                    <p class="text-gray-600">Al registrarte con mis enlaces, obtenés acceso exclusivo a mi soporte personal. Te voy a guiar paso a paso para que el bot quede configurado y funcionando de forma óptima. Esto es mucho más valioso que cualquier software que puedas comprar.</p>
+                </div>
+            </div>
         </section>
-        
-        <footer>
-            <p style="font-size: 0.9rem; color: #888; margin-top: 2rem;">
-                Aviso de riesgo: El trading conlleva un riesgo inherente y no es adecuado para todos los inversionistas. Las ganancias pasadas no garantizan los resultados futuros.
-            </p>
-        </footer>
-    </div>
+
+        <!-- How it Works & CTA -->
+        <section id="pasos" class="bg-white p-8 md:p-16 rounded-3xl shadow-xl">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900">¿Listo para empezar? Es así de fácil:</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+                    <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Registrate en Zaffex</h3>
+                    <p class="text-gray-600 mb-4">El broker que usamos para ejecutar las operaciones. Por favor, usá mi enlace de referido para registrarte.</p>
+                    <a href="https://broker.zaffex.com/auth/register?referrerUserId=01K2B7XCSZ45QKX7TMK865JNT9" target="_blank" class="cta-button w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-700 transition">Registrate en Zaffex</a>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+                    <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Registrate en GPTrading</h3>
+                    <p class="text-gray-600 mb-4">La plataforma donde funciona el bot. Por favor, usá mi enlace de referido para registrarte.</p>
+                    <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" target="_blank" class="cta-button w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-700 transition">Registrate en GPTrading</a>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+                    <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Contactá a tu Asesor</h3>
+                    <p class="text-gray-600 mb-4">Una vez que te registrés en ambas plataformas, contactame por WhatsApp para que te guíe en la configuración.</p>
+                    <a href="https://wa.link/93u0cb" target="_blank" class="cta-button w-full bg-emerald-600 text-white font-bold py-3 px-6 rounded-full hover:bg-emerald-700 transition">¡Contactame por WhatsApp!</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Testimonials Section -->
+    <section class="bg-slate-800 py-16 md:py-24 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Lo que dicen otros usuarios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+                    <img src="https://placehold.co/80x80/6366f1/ffffff?text=Martín" alt="Foto de perfil de Martín G." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-lg italic mb-4">"No tenía tiempo para aprender trading. Con este bot, estoy viendo resultados consistentes y mi capital crece sin que tenga que hacer nada. ¡Una maravilla!"</p>
+                    <div class="text-center">
+                        <p class="font-bold">Martín G.</p>
+                        <p class="text-sm text-gray-400">Inversionista en cripto, México</p>
+                    </div>
+                </div>
+                <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+                    <img src="https://placehold.co/80x80/6366f1/ffffff?text=Laura" alt="Foto de perfil de Laura P." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-lg italic mb-4">"Estaba cansada de seguir señales falsas. El bot me ha devuelto la confianza y ahora mi dinero está trabajando de forma inteligente. El soporte personalizado es lo que más valoro."</p>
+                    <div class="text-center">
+                        <p class="font-bold">Laura P.</p>
+                        <p class="text-sm text-gray-400">Emprendedora digital, España</p>
+                    </div>
+                </div>
+                <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+                    <img src="https://placehold.co/80x80/6366f1/ffffff?text=Alejandro" alt="Foto de perfil de Alejandro V." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-lg italic mb-4">"Con el bot, he podido diversificar mi capital sin tener que dedicarle horas. La facilidad de uso y el apoyo constante me han hecho sentir seguro en este mundo. ¡Gran herramienta!"</p>
+                    <div class="text-center">
+                        <p class="font-bold">Alejandro V.</p>
+                        <p class="text-sm text-gray-400">Profesional IT, Colombia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="container mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2">¿Realmente el bot es gratuito?</h3>
+                <p class="text-gray-600">Sí, el bot es completamente gratis.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2">¿Mi capital está seguro?</h3>
+                <p class="text-gray-600">Sí. El bot no tiene acceso a retirar fondos de tu cuenta. Tu dinero siempre permanece en tu cuenta de Zaffex, y el bot solo tiene permisos para ejecutar operaciones de compra/venta. Vos tenés el control total en todo momento.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2">¿Es necesario tener conocimientos de trading?</h3>
+                <p class="text-gray-600">No. El bot está diseñado para que cualquier persona con conocimientos básicos en el mundo de los brokers pueda usarlo. De hecho, mi soporte personalizado está para guiarte en todo el proceso de configuración y responder cualquier duda que tengas.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2">¿Cuánto dinero necesito para empezar?</h3>
+                <p class="text-gray-600">Eso es algo muy personal. De todas maneras, podemos hablar sobre las cantidades ideales para empezar durante nuestra llamada de configuración, una vez que te registres en las plataformas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="bg-gradient-to-r from-sky-800 to-sky-600 py-16 md:py-24 text-center text-white rounded-t-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">¿Qué estás esperando?</h2>
+        <p class="text-lg md:text-2xl mb-8">Unite a la nueva era del trading. Tu capital, trabajando 24/7, de forma inteligente y automatizada.</p>
+        <a href="#pasos" class="cta-button inline-block bg-emerald-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-emerald-600">¡Quiero Acceder al Bot GRATIS!</a>
+    </section>
+    
+    <footer class="bg-sky-900 text-gray-300 py-8 text-center">
+        <p>&copy; 2025 Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        function generateCompoundTable(initialCapital, tableId) {
-            const tableBody = document.getElementById(tableId);
-            tableBody.innerHTML = '';
-            let accumulated = initialCapital;
-            const monthlyReturnRate = 1.13475; // Corresponde al 113.475% de ganancia del primer mes, ajustado para el cálculo.
-            
-            for (let mes = 1; mes <= 12; mes++) {
-                const initial = accumulated;
-                const gain = initial * (monthlyReturnRate - 1);
-                accumulated += gain;
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${mes}</td>
-                    <td>$${initial.toFixed(2)}</td>
-                    <td>$${gain.toFixed(2)}</td>
-                    <td>$${accumulated.toFixed(2)}</td>
-                `;
-                tableBody.appendChild(row);
-            }
+        function showMessageBox() {
+            document.getElementById('message-box').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
         }
 
-        // Generar tabla para $10
-        generateCompoundTable(10, 'compound-table-body-10');
-        
-        // Generar tabla para $100
-        generateCompoundTable(100, 'compound-table-body-100');
-
-        // Generar tabla para $1,000
-        generateCompoundTable(1000, 'compound-table-body-1000');
+        function hideMessageBox() {
+            document.getElementById('message-box').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
     </script>
 </body>
 </html>
