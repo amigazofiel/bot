@@ -19,7 +19,7 @@
             box-shadow: 0 10px 20px -5px rgba(22, 78, 99, 0.4);
         }
         .video-player {
-            /* Mantiene la proporción 16:9 y el relleno del iframe */
+            /* Mantiene la proporción 16:9 y el relleno del contenido */
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -28,8 +28,7 @@
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        /* Garantiza que el iframe ocupe todo el espacio del contenedor */
-        .video-player iframe,
+        /* Garantiza que el video ocupe todo el espacio del contenedor */
         .video-player video {
             position: absolute;
             top: 0;
@@ -116,13 +115,16 @@
                 Es hora de que tu capital trabaje para vos, 24/7, sin emociones ni errores humanos.
             </p>
             <div id="video-player-container" class="video-player max-w-5xl mx-auto">
-                <iframe 
+                <video 
                     class="w-full h-full" 
-                    src="https://www.youtube.com/embed/11ykEi0VJsM?modestbranding=1&rel=0&controls=1" 
-                    frameborder="0" 
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                    src="Inversión exitosa.mp4" 
+                    controls 
+                    loop 
+                    muted 
+                    autoplay 
+                    playsinline>
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
             </div>
         </div>
     </header>
