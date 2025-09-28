@@ -27,6 +27,8 @@
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
+        /* Estilo para que el iframe (o video) llene el contenedor */
+        .video-player iframe,
         .video-player video {
             position: absolute;
             top: 0;
@@ -35,6 +37,9 @@
             height: 100%;
             object-fit: cover;
         }
+        /* Los estilos de overlay y botones de play se pueden ELIMINAR con YouTube, 
+           pero los mantengo comentados por si deseas reintroducirlos para un control visual */
+        /*
         .video-player-overlay {
             position: absolute;
             top: 0;
@@ -47,30 +52,7 @@
             background: rgba(0, 0, 0, 0.2);
             transition: background 0.3s ease;
         }
-        .video-player:hover .video-player-overlay {
-            background: rgba(0, 0, 0, 0.4);
-        }
-        .play-button {
-            width: 5rem;
-            height: 5rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            cursor: pointer;
-            opacity: 0;
-        }
-        .video-player:hover .play-button {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .play-button svg {
-            fill: #1a202c;
-            width: 2.5rem;
-            height: 2.5rem;
-        }
+        */
         .message-box {
             position: fixed;
             top: 50%;
@@ -106,7 +88,7 @@
 
     <div id="message-box" class="message-box">
         <p class="text-lg font-semibold mb-4">¡Video integrado con éxito!</p>
-        <p class="text-gray-600 mb-6">El video "Inversión exitosa.mp4" ya está cargado. ¡Tu landing page está lista! 🚀</p>
+        <p class="text-gray-600 mb-6">El video se cargó usando YouTube. ¡Tu landing page está lista! 🚀</p>
         <button onclick="hideMessageBox()" class="bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800">Entendido</button>
     </div>
     <div id="overlay" class="overlay" onclick="hideMessageBox()"></div>
@@ -185,21 +167,14 @@
                 Es hora de que tu capital trabaje para vos, 24/7, sin emociones ni errores humanos.
             </p>
             <div id="video-player-container" class="video-player max-w-5xl mx-auto">
-                <video id="video-player" class="w-full h-full" poster="" autoplay loop muted playsinline>
-                    <source src="Inversión exitosa.mp4" type="video/mp4">
-                    Tu navegador no soporta la etiqueta de video.
-                </video>
-                <div class="video-player-overlay">
-                    <button id="play-pause-button" class="play-button">
-                        <svg id="play-icon" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <svg id="pause-icon" class="hidden" viewBox="0 0 24 24">
-                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                        </svg>
-                    </button>
+                <iframe 
+                    class="w-full h-full" 
+                    src="https://www.youtube.com/embed/11ykEi0VJsM?autoplay=1&mute=1&loop=1&playlist=11ykEi0VJsM&controls=0&modestbranding=1&rel=0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
                 </div>
-            </div>
         </div>
     </header>
 
@@ -343,45 +318,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const videoPlayer = document.getElementById('video-player');
-            const playPauseButton = document.getElementById('play-pause-button');
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
             const messageBox = document.getElementById('message-box');
             const overlay = document.getElementById('overlay');
 
-            // Intenta reproducir el video al cargar para ver si está en reproducción
-            videoPlayer.play().catch(error => {
-                // Si la reproducción automática es bloqueada, se queda en pausa
-                console.error("Autoplay bloqueado:", error);
-            });
+            // Muestra el mensaje de éxito una vez cargado el DOM
+            setTimeout(showMessageBox, 500);
 
-
-            videoPlayer.addEventListener('play', () => {
-                playIcon.classList.add('hidden');
-                pauseIcon.classList.remove('hidden');
-            });
-
-            videoPlayer.addEventListener('pause', () => {
-                playIcon.classList.remove('hidden');
-                pauseIcon.classList.add('hidden');
-            });
-
-            playPauseButton.addEventListener('click', () => {
-                if (videoPlayer.paused) {
-                    videoPlayer.play();
-                    showMessageBox(); 
-                } else {
-                    videoPlayer.pause();
-                }
-            });
-            
-            // Si el video se reproduce automáticamente (autoplay), mostramos el mensaje después de un pequeño retraso
-            if (!videoPlayer.paused) {
-                setTimeout(showMessageBox, 500);
-            }
-
-            // Handle the message box from the initial design
             function showMessageBox() {
                 messageBox.style.display = 'block';
                 overlay.style.display = 'block';
