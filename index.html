@@ -37,22 +37,7 @@
             height: 100%;
             object-fit: cover;
         }
-        /* Los estilos de overlay y botones de play se pueden ELIMINAR con YouTube, 
-           pero los mantengo comentados por si deseas reintroducirlos para un control visual */
-        /*
-        .video-player-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease;
-        }
-        */
+        
         .message-box {
             position: fixed;
             top: 50%;
@@ -87,8 +72,8 @@
 <body class="bg-slate-100 text-gray-800">
 
     <div id="message-box" class="message-box">
-        <p class="text-lg font-semibold mb-4">¡Video integrado con éxito!</p>
-        <p class="text-gray-600 mb-6">El video se cargó usando YouTube. ¡Tu landing page está lista! 🚀</p>
+        <p class="text-lg font-semibold mb-4">¡Landing Page lista!</p>
+        <p class="text-gray-600 mb-6">El video se cargó correctamente (reproducción automática silenciada). **Haz clic en el ícono de volumen** en el video para activar el audio. 🚀</p>
         <button onclick="hideMessageBox()" class="bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800">Entendido</button>
     </div>
     <div id="overlay" class="overlay" onclick="hideMessageBox()"></div>
@@ -169,7 +154,7 @@
             <div id="video-player-container" class="video-player max-w-5xl mx-auto">
                 <iframe 
                     class="w-full h-full" 
-                    src="https://www.youtube.com/embed/11ykEi0VJsM?autoplay=1&mute=1&loop=1&playlist=11ykEi0VJsM&controls=0&modestbranding=1&rel=0" 
+                    src="https://www.youtube.com/embed/11ykEi0VJsM?autoplay=1&mute=1&loop=1&playlist=11ykEi0VJsM&modestbranding=1&rel=0" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
