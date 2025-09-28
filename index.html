@@ -1,268 +1,535 @@
 <!DOCTYPE html>
+
 <html lang="es" class="scroll-smooth">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Desbloquea el Trading Automático con IA</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
         body {
+
             font-family: 'Inter', sans-serif;
+
             background-color: #f3f4f6;
+
         }
+
         .cta-button {
+
             transition: all 0.3s ease-in-out;
+
         }
+
         .cta-button:hover {
+
             transform: translateY(-2px) scale(1.02);
+
             box-shadow: 0 10px 20px -5px rgba(22, 78, 99, 0.4);
+
         }
+
         .video-player {
+
             /* Mantiene la proporción 16:9 y el relleno del iframe */
+
             position: relative;
+
             width: 100%;
+
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
+
             background-color: #1a202c;
+
             border-radius: 1.5rem;
+
             overflow: hidden;
+
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
         }
+
         /* Garantiza que el iframe ocupe todo el espacio del contenedor */
+
         .video-player iframe {
+
             position: absolute;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             height: 100%;
+
             object-fit: cover;
+
         }
+
     </style>
+
 </head>
+
 <body class="bg-slate-100 text-gray-800">
 
+
+
     <header class="py-16 md:py-24 bg-gradient-to-r from-sky-800 to-sky-600 text-white relative overflow-hidden">
+
         <svg class="absolute inset-0 w-full h-full object-cover opacity-20" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+
             <rect width="100%" height="100%" fill="#103a48"/>
+
             <path d="M100 0V800 M200 0V800 M300 0V800 M400 0V800 M500 0V800 M600 0V800 M700 0V800 M800 0V800 M900 0V800 M1000 0V800 M1100 0V800" stroke="#1d4052" stroke-width="1"/>
+
             <path d="M0 100H1200 M0 200H1200 M0 300H1200 M0 400H1200 M0 500H1200 M0 600H1200 M0 700H1200" stroke="#1d4052" stroke-width="1"/>
+
             <g id="candlesticks">
+
                 <rect x="55" y="650" width="10" height="20" fill="#22c55e" /> <line x1="60" y1="675" x2="60" y2="645" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="75" y="620" width="10" height="40" fill="#22c55e" /> <line x1="80" y1="665" x2="80" y2="615" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="95" y="610" width="10" height="25" fill="#ef4444" /> <line x1="100" y1="600" x2="100" y2="640" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="115" y="600" width="10" height="30" fill="#22c55e" /> <line x1="120" y1="635" x2="120" y2="595" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="135" y="580" width="10" height="45" fill="#22c55e" /> <line x1="140" y1="628" x2="140" y2="575" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="155" y="590" width="10" height="30" fill="#ef4444" /> <line x1="160" y1="585" x2="160" y2="630" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="175" y="570" width="10" height="50" fill="#22c55e" /> <line x1="180" y1="625" x2="180" y2="565" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="195" y="550" width="10" height="60" fill="#22c55e" /> <line x1="200" y1="615" x2="200" y2="545" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="215" y="530" width="10" height="55" fill="#22c55e" /> <line x1="220" y1="590" x2="220" y2="525" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="235" y="520" width="10" height="40" fill="#ef4444" /> <line x1="240" y1="510" x2="240" y2="565" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="255" y="500" width="10" height="60" fill="#22c55e" /> <line x1="260" y1="565" x2="260" y2="495" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="275" y="480" width="10" height="70" fill="#22c55e" /> <line x1="280" y1="555" x2="280" y2="475" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="295" y="460" width="10" height="80" fill="#22c55e" /> <line x1="300" y1="545" x2="300" y2="455" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="315" y="480" width="10" height="40" fill="#ef4444" /> <line x1="320" y1="470" x2="320" y2="530" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="335" y="440" width="10" height="70" fill="#22c55e" /> <line x1="340" y1="515" x2="340" y2="435" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="355" y="420" width="10" height="90" fill="#22c55e" /> <line x1="360" y1="515" x2="360" y2="415" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="375" y="400" width="10" height="100" fill="#22c55e" /> <line x1="380" y1="505" x2="380" y2="395" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="395" y="430" width="10" height="50" fill="#ef4444" /> <line x1="400" y1="420" x2="400" y2="490" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="415" y="380" width="10" height="90" fill="#22c55e" /> <line x1="420" y1="475" x2="420" y2="375" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="435" y="360" width="10" height="110" fill="#22c55e" /> <line x1="440" y1="475" x2="440" y2="355" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="455" y="340" width="10" height="120" fill="#22c55e" /> <line x1="460" y1="465" x2="460" y2="335" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="475" y="320" width="10" height="130" fill="#22c55e" /> <line x1="480" y1="455" x2="480" y2="315" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="495" y="350" width="10" height="60" fill="#ef4444" /> <line x1="500" y1="340" x2="500" y2="420" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="515" y="300" width="10" height="120" fill="#22c55e" /> <line x1="520" y1="425" x2="520" y2="295" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="535" y="280" width="10" height="130" fill="#22c55e" /> <line x1="540" y1="415" x2="540" y2="275" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="555" y="260" width="10" height="140" fill="#22c55e" /> <line x1="560" y1="405" x2="560" y2="255" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="575" y="290" width="10" height="70" fill="#ef4444" /> <line x1="580" y1="280" x2="580" y2="380" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="595" y="240" width="10" height="130" fill="#22c55e" /> <line x1="600" y1="375" x2="600" y2="235" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="615" y="220" width="10" height="140" fill="#22c55e" /> <line x1="620" y1="365" x2="620" y2="215" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="635" y="200" width="10" height="150" fill="#22c55e" /> <line x1="640" y1="355" x2="640" y2="195" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="655" y="230" width="10" height="90" fill="#ef4444" /> <line x1="660" y1="220" x2="660" y2="330" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="675" y="180" width="10" height="160" fill="#22c55e" /> <line x1="680" y1="345" x2="680" y2="175" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="695" y="160" width="10" height="170" fill="#22c55e" /> <line x1="700" y1="335" x2="700" y2="155" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="715" y="140" width="10" height="180" fill="#22c55e" /> <line x1="720" y1="325" x2="720" y2="135" stroke="#22c55e" stroke-width="1"/>
+
                 <rect x="735" y="170" width="10" height="110" fill="#ef4444" /> <line x1="740" y1="160" x2="740" y2="290" stroke="#ef4444" stroke-width="1"/>
+
                 <rect x="755" y="120" width="10" height="200" fill="#22c55e" /> <line x1="760" y1="325" x2="760" y2="115" stroke="#22c55e" stroke-width="1"/>
+
             </g>
+
             <path d="M50 700 C150 600, 250 500, 350 450 T500 400 T650 350 T800 300" fill="none" stroke="#fcd34d" stroke-width="2" />
+
             <circle cx="260" cy="565" r="8" fill="#38bdf8" />
+
             <text x="275" y="570" font-family="Inter" font-size="20" fill="#38bdf8" font-weight="bold">ENTRADA</text>
+
             <circle cx="760" cy="125" r="8" fill="#ef4444" />
+
             <text x="775" y="130" font-family="Inter" font-size="20" fill="#ef4444" font-weight="bold">SALIDA</text>
+
             <line x1="260" y1="565" x2="760" y2="125" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,5" />
+
             <text x="510" y="320" font-family="Inter" font-size="24" fill="#22c55e" font-weight="bold" text-anchor="middle">~+250%</text>
+
             <text x="1180" y="700" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$4.00</text>
+
             <text x="1180" y="600" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$8.00</text>
+
             <text x="1180" y="500" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$12.00</text>
+
             <text x="1180" y="400" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$16.00</text>
+
             <text x="1180" y="300" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$20.00</text>
+
             <text x="1180" y="200" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$24.00</text>
+
             <text x="1180" y="100" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="end">$28.00</text>
+
             <text x="100" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 15</text>
+
             <text x="300" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 16</text>
+
             <text x="500" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 17</text>
+
             <text x="700" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 18</text>
+
             <text x="900" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 19</text>
+
             <text x="1100" y="790" font-family="Inter" font-size="16" fill="#cbd5e1" text-anchor="middle">Ago 20</text>
+
         </svg>
+
         <div class="container mx-auto px-4 text-center relative z-10">
+
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+
                 Dejá de Perder Tiempo y Dinero.
+
                 <br class="hidden md:inline">
+
                 <span class="text-amber-300">Descubrí el Trading Automatizado.</span>
+
             </h1>
+
             <p class="text-lg md:text-2xl max-w-3xl mx-auto mb-8 font-light">
+
                 Es hora de que tu capital trabaje para vos, 24/7, sin emociones ni errores humanos.
+
             </p>
+
             <div id="video-player-container" class="video-player max-w-5xl mx-auto">
+
                 <iframe 
+
                     class="w-full h-full" 
+
                     src="https://www.youtube.com/embed/11ykEi0VJsM?modestbranding=1&rel=0&controls=1" 
+
                     frameborder="0" 
+
                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+
                     allowfullscreen>
+
                 </iframe>
+
             </div>
+
         </div>
+
     </header>
 
+
+
     <main class="container mx-auto px-4 py-16 md:py-24">
+
         <section class="mb-16 md:mb-24 text-center">
+
             <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900">¿Te sentís identificado?</h2>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
                     <span class="text-4xl">🕰️</span>
+
                     <h3 class="text-2xl font-semibold mt-4 mb-2">Poco Tiempo</h3>
+
                     <p class="text-gray-600">Trabajás, tenés familia o un negocio... no tenés tiempo para analizar gráficos todo el día.</p>
+
                 </div>
+
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
                     <span class="text-4xl">📉</span>
+
                     <h3 class="text-2xl font-semibold mt-4 mb-2">Pérdidas Frustrantes</h3>
+
                     <p class="text-gray-600">Seguiste señales de Telegram o gurús de YouTube, solo para terminar con la cuenta en rojo.</p>
+
                 </div>
+
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
                     <span class="text-4xl">🧠</span>
+
                     <h3 class="text-2xl font-semibold mt-4 mb-2">Estrés y Emoción</h3>
+
                     <p class="text-gray-600">Te dejaste llevar por el miedo o la avaricia, tomando decisiones impulsivas que lamentás después.</p>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section class="bg-sky-50 py-16 md:py-24 rounded-3xl mb-16 md:mb-24 flex flex-col md:flex-row items-center gap-8">
+
             <div class="md:w-1/2 px-4">
-                                <img src="https://i.postimg.cc/SN64KZfz/1.png" alt="Bot de Trading Automático con gráfico de crecimiento" class="rounded-3xl shadow-xl w-full h-auto">
+
+                <img src="https://placehold.co/600x400/fff/333?text=Bot+de+Trading" alt="Ilustración de un bot de trading" class="rounded-3xl shadow-xl w-full h-auto">
+
             </div>
+
             <div class="md:w-1/2 px-4 text-center md:text-left">
+
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 text-sky-900">La solución es simple, inteligente y 100% automatizada.</h2>
+
                 <p class="text-lg md:text-xl text-gray-700">Como usuario experimentado, sé que la solución no es pasar más horas frente a la pantalla. Quiero compartirte el <span class="font-bold text-sky-800">Bot de Trading Automático</span>, una poderosa herramienta diseñada para operar por vos 24/7 en los mercados, usando la inteligencia artificial para tomar decisiones lógicas y sin emociones.</p>
+
             </div>
+
         </section>
+
+
 
         <section class="max-w-6xl mx-auto text-center mb-16 md:mb-24">
+
             <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">¿Y lo mejor? ¡Es completamente <span class="text-emerald-600">GRATIS!</span></h2>
+
             <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">Sí, lo leíste bien. No vas a pagar ni un centavo por el bot. Mi misión es compartirte esta oportunidad para que vos también alcancés tus metas financieras. Lo único que te pido es que te registrés en las plataformas que yo mismo utilizo con mis enlaces de referido, lo que me permite seguir brindándote esta guía.</p>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-12">
+
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
                     <span class="text-4xl mb-4 block">🤝</span>
+
                     <h3 class="text-2xl font-bold mb-2">Una Alianza Ganar-Ganar</h3>
+
                     <p class="text-gray-600">Yo recibo una pequeña comisión de las plataformas en las que te registras con mi enlace de referido cada vez que el bot te genera ganancias. Esto no afecta tu porción de los beneficios. Así, yo gano cuando vos ganás. ¡Tu éxito es mi éxito!</p>
+
                 </div>
+
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+
                     <span class="text-4xl mb-4 block">🤖</span>
+
                     <h3 class="text-2xl font-bold mb-2">Soporte y Configuración Personal</h3>
+
                     <p class="text-gray-600">Al registrarte con mis enlaces, obtenés acceso exclusivo a mi soporte personal. Te voy a guiar paso a paso para que el bot quede configurado y funcionando de forma óptima. Esto es mucho más valioso que cualquier software que puedas comprar.</p>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section id="pasos" class="bg-white p-8 md:p-16 rounded-3xl shadow-xl">
+
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900">¿Listo para empezar? Es así de fácil:</h2>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
                 <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+
                     <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">1</div>
+
                     <h3 class="text-xl font-bold mb-2">Registrate en Zaffex</h3>
+
                     <p class="text-gray-600 mb-4">El broker que usamos para ejecutar las operaciones. Por favor, usá mi enlace de referido para registrarte.</p>
+
                     <a href="https://broker.zaffex.com/auth/register?referrerUserId=01K2B7XCSZ45QKX7TMK865JNT9" target="_blank" class="cta-button w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-700 transition">Registrate en Zaffex</a>
+
                 </div>
+
                 <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+
                     <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">2</div>
+
                     <h3 class="text-xl font-bold mb-2">Registrate en GPTrading</h3>
+
                     <p class="text-gray-600 mb-4">La plataforma donde funciona el bot. Por favor, usá mi enlace de referido para registrarte.</p>
+
                     <a href="https://app.gptrading.ai/invite/01K2B7GQJF62J196F890S9SD3M" target="_blank" class="cta-button w-full bg-sky-600 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-700 transition">Registrate en GPTrading</a>
+
                 </div>
+
                 <div class="flex flex-col items-center text-center p-6 border-2 border-slate-200 rounded-2xl">
+
                     <div class="w-16 h-16 bg-sky-200 text-sky-800 rounded-full flex items-center justify-center font-bold text-2xl mb-4">3</div>
+
                     <h3 class="text-xl font-bold mb-2">Contactá a tu Asesor</h3>
+
                     <p class="text-gray-600 mb-4">Una vez que te registrés en ambas plataformas, contactame por WhatsApp para que te guíe en la configuración.</p>
+
                     <a href="https://wa.link/93u0cb" target="_blank" class="cta-button w-full bg-emerald-600 text-white font-bold py-3 px-6 rounded-full hover:bg-emerald-700 transition">¡Contactame por WhatsApp!</a>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+
+
     <section class="bg-slate-800 py-16 md:py-24 text-white">
+
         <div class="container mx-auto px-4">
+
             <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Lo que dicen otros usuarios</h2>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
                 <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+
                     <img src="https://placehold.co/80x80/6366f1/ffffff?text=Martín" alt="Foto de perfil de Martín G." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+
                     <p class="text-lg italic mb-4">"No tenía tiempo para aprender trading. Con este bot, estoy viendo resultados consistentes y mi capital crece sin que tenga que hacer nada. ¡Una maravilla!"</p>
+
                     <div class="text-center">
+
                         <p class="font-bold">Martín G.</p>
+
                         <p class="text-sm text-gray-400">Inversionista en cripto, México</p>
+
                     </div>
+
                 </div>
+
                 <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+
                     <img src="https://placehold.co/80x80/6366f1/ffffff?text=Laura" alt="Foto de perfil de Laura P." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+
                     <p class="text-lg italic mb-4">"Estaba cansada de seguir señales falsas. El bot me ha devuelto la confianza y ahora mi dinero está trabajando de forma inteligente. El soporte personalizado es lo que más valoro."</p>
+
                     <div class="text-center">
+
                         <p class="font-bold">Laura P.</p>
+
                         <p class="text-sm text-gray-400">Emprendedora digital, España</p>
+
                     </div>
+
                 </div>
+
                 <div class="bg-slate-700 p-8 rounded-2xl shadow-lg">
+
                     <img src="https://placehold.co/80x80/6366f1/ffffff?text=Alejandro" alt="Foto de perfil de Alejandro V." class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+
                     <p class="text-lg italic mb-4">"Con el bot, he podido diversificar mi capital sin tener que dedicarle horas. La facilidad de uso y el apoyo constante me han hecho sentir seguro en este mundo. ¡Gran herramienta!"</p>
+
                     <div class="text-center">
+
                         <p class="font-bold">Alejandro V.</p>
+
                         <p class="text-sm text-gray-400">Profesional IT, Colombia</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
     
+
     <section class="container mx-auto px-4 py-16 md:py-24">
+
         <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h2>
+
         <div class="max-w-4xl mx-auto space-y-6">
+
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+
                 <h3 class="text-lg font-semibold mb-2">¿Realmente el bot es gratuito?</h3>
+
                 <p class="text-gray-600">Sí, el bot es completamente gratis.</p>
+
             </div>
+
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+
                 <h3 class="text-lg font-semibold mb-2">¿Mi capital está seguro?</h3>
+
                 <p class="text-gray-600">Sí. El bot no tiene acceso a retirar fondos de tu cuenta. Tu dinero siempre permanece en tu cuenta de Zaffex, y el bot solo tiene permisos para ejecutar operaciones de compra/venta. Vos tenés el control total en todo momento.</p>
+
             </div>
+
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+
                 <h3 class="text-lg font-semibold mb-2">¿Es necesario tener conocimientos de trading?</h3>
+
                 <p class="text-gray-600">No. El bot está diseñado para que cualquier persona con conocimientos básicos en el mundo de los brokers pueda usarlo. De hecho, mi soporte personalizado está para guiarte en todo el proceso de configuración y responder cualquier duda que tengas.</p>
+
             </div>
+
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+
                 <h3 class="text-lg font-semibold mb-2">¿Cuánto dinero necesito para empezar?</h3>
+
                 <p class="text-gray-600">Eso es algo muy personal. De todas maneras, podemos hablar sobre las cantidades ideales para empezar durante nuestra llamada de configuración, una vez que te registres en las plataformas.</p>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="bg-gradient-to-r from-sky-800 to-sky-600 py-16 md:py-24 text-center text-white rounded-t-3xl">
+
         <h2 class="text-3xl md:text-5xl font-bold mb-4">¿Qué estás esperando?</h2>
+
         <p class="text-lg md:text-2xl mb-8">Unite a la nueva era del trading. Tu capital, trabajando 24/7, de forma inteligente y automatizada.</p>
+
         <a href="#pasos" class="cta-button inline-block bg-emerald-500 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-emerald-600">¡Quiero Acceder al Bot GRATIS!</a>
+
     </section>
+
     
+
     <footer class="bg-sky-900 text-gray-300 py-8 text-center">
+
         <p>&copy; 2025 Todos los derechos reservados.</p>
+
     </footer>
 
+
+
 </body>
+
 </html>
