@@ -37,46 +37,10 @@
             height: 100%;
             object-fit: cover;
         }
-        
-        .message-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 100;
-            display: none;
-            text-align: center;
-            max-width: 90%;
-            animation: fadeIn 0.3s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -60%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-            display: none;
-        }
+        /* ELIMINAMOS TODOS LOS ESTILOS DE 'message-box' y 'overlay' */
     </style>
 </head>
 <body class="bg-slate-100 text-gray-800">
-
-    <div id="message-box" class="message-box">
-        <p class="text-lg font-semibold mb-4">¡Landing Page lista!</p>
-        <p class="text-gray-600 mb-6">El video se cargó correctamente (reproducción automática silenciada). **Haz clic en el ícono de volumen** en el video para activar el audio. 🚀</p>
-        <button onclick="hideMessageBox()" class="bg-sky-700 text-white font-bold py-2 px-6 rounded-full hover:bg-sky-800">Entendido</button>
-    </div>
-    <div id="overlay" class="overlay" onclick="hideMessageBox()"></div>
 
     <header class="py-16 md:py-24 bg-gradient-to-r from-sky-800 to-sky-600 text-white relative overflow-hidden">
         <svg class="absolute inset-0 w-full h-full object-cover opacity-20" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
@@ -159,7 +123,7 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
-                </div>
+            </div>
         </div>
     </header>
 
@@ -301,24 +265,5 @@
         <p>&copy; 2025 Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const messageBox = document.getElementById('message-box');
-            const overlay = document.getElementById('overlay');
-
-            // Muestra el mensaje de éxito una vez cargado el DOM
-            setTimeout(showMessageBox, 500);
-
-            function showMessageBox() {
-                messageBox.style.display = 'block';
-                overlay.style.display = 'block';
-            }
-
-            window.hideMessageBox = function() {
-                messageBox.style.display = 'none';
-                overlay.style.display = 'none';
-            };
-        });
-    </script>
-</body>
+    </body>
 </html>
