@@ -19,6 +19,7 @@
             box-shadow: 0 10px 20px -5px rgba(22, 78, 99, 0.4);
         }
         .video-player {
+            /* ESTE BLOQUE ES CRUCIAL PARA LA IMAGEN (aspect ratio 16:9) */
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -27,7 +28,7 @@
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        /* Estilo para que el iframe (o video) llene el contenedor */
+        /* ESTE BLOQUE ES CRUCIAL PARA LA IMAGEN (fill content) */
         .video-player iframe,
         .video-player video {
             position: absolute;
@@ -37,7 +38,6 @@
             height: 100%;
             object-fit: cover;
         }
-        /* ELIMINAMOS TODOS LOS ESTILOS DE 'message-box' y 'overlay' */
     </style>
 </head>
 <body class="bg-slate-100 text-gray-800">
@@ -265,5 +265,5 @@
         <p>&copy; 2025 Todos los derechos reservados.</p>
     </footer>
 
-    </body>
+</body>
 </html>
